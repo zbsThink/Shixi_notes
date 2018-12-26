@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!--<img src="./assets/logo.png">-->
-    <Choose/>
+    <Tab1/>
   </div>
 </template>
 
@@ -11,6 +11,8 @@ import La from './components/20181210-axios'
 import Parent from './components/Parent'
 import Tab from './components/Tab'
 import Choose  from './components/Choose'
+import Test  from './components/test'
+import Tab1 from './components/Tab1'
 export default {
   name: 'App',
   components: {
@@ -18,7 +20,9 @@ export default {
     La,
     Parent,
     Tab,
-    Choose
+    Tab1,
+    Choose,
+    Test
   }
 }
 </script>
