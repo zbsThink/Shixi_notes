@@ -11,6 +11,9 @@ Vue.use(VueResource)
 Vue.config.productionTip = false
 Vue.prototype.$axios = Axios
 Axios.defaults.baseURL = 'http://www.wwtliu.com';
+// Vue.filter('currency',function(value){
+//   return '$'+value.toFixed(2)
+// })
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

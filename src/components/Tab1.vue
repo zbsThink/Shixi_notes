@@ -6,7 +6,11 @@
            <a href="#" class = "project" @click = "makeActive('project')">项目</a>
            <a href="#" class = "conact" @click = "makeActive('conact')">联系我们</a>
         </nav>
-        <p>我是<b>{{active}}</b></p>
+        <p v-if="active=='home'">所有内容集结于此</p>
+        <p v-else-if="active=='service'">优质的服务使你放心</p>
+        <p v-else-if="active=='project'">具体什么项目等你来看</p>
+        <p v-else-if="active=='conact'">联系我们了解更多</p>
+        <p v-else>not found 404</p>
     </div>
 </template>
 <script>

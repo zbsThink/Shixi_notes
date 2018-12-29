@@ -3,7 +3,7 @@
         <input type="text" placeholder="请输入关键字" class="text" v-model='keywords' @keyup="get($event)" @keyup.up.prevent="selectUp" @keyup.down.prevent="selectDown"/>
         <input type = 'button' value="百度一下" class="button" @click="searchMsg(keywords)"/>
         <ul>
-           <li v-for="(value,index) in myData" ::key="index" :class="{gray:index==now}" @click="search(value)">{{value}}</li>
+           <li v-for="(value,index) in myData" :key="index" :class="{gray:index==now}" @click="search(value)">{{value}}</li>
         </ul>
        
        
@@ -38,6 +38,14 @@ export default {
                     console.log('successful')
                 }
             })
+            // 方法有用但是要使用form-data格式传递参数
+            // this.$http.jsonp(this.HOST+'?wd='+this.keywords)
+            // .then(res=>{
+            //     console.log(res)
+            // })
+            // .catch(error=>{
+            //     console.log(error)
+            // })
             // 这个不行
         //     let url = this.HOST
         //     this.$axios.post(url+'?wd='+this.keywords)
@@ -125,6 +133,7 @@ export default {
       border:0;
     -webkit-appearance: none;
     -webkit-border-radius: 0;
+    border-radius:0;
     position:absolute;
    }
    li:hover{
