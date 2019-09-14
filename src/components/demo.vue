@@ -1,149 +1,50 @@
 <template>
     <div>
-   <form id="main" v-cloak>
-	<h1>Services</h1>
-
-	<ul>
-    <!--使用toggleActive改变每个商品的active值，并通过判断数据services的active的值来实现选中效果以及最后计算出价格-->
-		<li v-for="(service,index) in services" :key="index" @click="toggleActive(service)" v-bind:class="{ 'active': service.active}">
-			{{service.name}} <span>{{service.price | currency}}</span>
-		</li>
-	</ul>
-
-	<div class="total">
-		Total: <span>{{total() | currency}}</span>
-        
-	</div>
-
-   </form>
+        <h3>I am demo_component</h3>
+        <div>
+            <el-button-group v-for="button in buttonData" :key="button">
+                <el-button @click="tab = button" :class="['tab-button',{tabActive:tab === button}]">{{button}}</el-button>
+            </el-button-group>
+            <div class="button-block" v-if="tab === '图片'">这里面由几张图片</div>
+            <div class="button-block" v-else-if="tab === '参数'">这是一些苹果手机的参数，你可以参考一下</div>
+            <div class="button-block" v-else-if="tab === '评价'">用户对这款手机的评价并不好</div>
+        </div>
     </div>
 </template>
 <script>
 export default {
-    name:'test',
     data(){
         return {
-           services:[
-               {
-                   name:'iphone xs Max',
-                   price:10299,
-                   active:true
-               },
-               {
-                   name:'huawei mate20 pro',
-                   price:6499,
-                   active:false
-               },
-               {
-                   name:'xiaomi Mix3',
-                   price:4566,
-                   active:false
-               }
-           ]
+          tab:'图片',
+          buttonData:['图片','参数','评价']
         }
     },
-    methods: {
-        toggleActive:function(s){
-            s.active = !s.active
-        },
-        total:function(){
-            let total = 0
-            this.services.forEach(s=>{
-                if(s.active){
-                    total+=s.price
-                }
-            })
-            return total
+    methods:{
+        test(){
+            console.log('我生效了')
         }
-    },
-   filters:{
-       currency:function(value){
-           if(!value)return
-           return '$'+value.toFixed(2)
-       }
-   }
+    }
 }
 </script>
 <style scoped>
-    [v-cloak]{
-        display:none;
-    }
-    *{
-    	margin:0;
-    	padding:0;
-    }
-
-    body{
-    	font:15px/1.3 'Open Sans', sans-serif;
-    	color: #5e5b64;
-    	text-align:center;
-    }
-
-    a, a:visited {
-    	outline:none;
-    	color:#389dc1;
-    }
-
-    a:hover{
-    	text-decoration:none;
-    }
-
-    section, footer, header, aside, nav{
-    	display: block;
-    }
-     form{
-    	background-color: #61a1bc;
-    	border-radius: 2px;
-    	box-shadow: 0 1px 1px #ccc;
-    	width: 400px;
-    	padding: 35px 60px;
-    	margin: 50px auto;
-    }
-
-    form h1{
-    	color:#fff;
-    	font-size:64px;
-    	font-family:'Cookie', cursive;
-    	font-weight: normal;
-    	line-height:1;
-    	text-shadow:0 3px 0 rgba(0,0,0,0.1);
-    }
-
-    form ul{
-    	list-style:none;
-    	color:#fff;
-    	font-size:20px;
-    	font-weight:bold;
-    	text-align: left;
-    	margin:20px 0 15px;
-    }
-
-    form ul li{
-    	padding:20px 30px;
-    	background-color:#8ec16d;;
-    	margin-bottom:8px;
-    	box-shadow:0 1px 1px rgba(0,0,0,0.1);
-    	cursor:pointer;
-    }
-
-    form ul li span{
-    	float:right;
-    }
-
-    form ul li.active{
-    	background-color:#e53885
-    }
-
-    div.total{
-    	border-top:1px solid rgba(255,255,255,0.5);
-    	padding:15px 30px;
-    	font-size:20px;
-    	font-weight:bold;
-    	text-align: left;
-    	color:#fff;
-    }
-
-    div.total span{
-    	float:right;
-    }
+   .button-block{
+       width:300px;
+       height:100px;
+       margin:0 auto;
+       border:1px solid #0be;
+   }
+   .tab-button{
+       background:#bd0;
+       color:#fff;
+   }
+   .tabActive{
+       background:#0eb;
+       color:#fff;
+   }
+   .el-button:focus,.el-button:hover{
+       background:#0eb;
+       color:#fff;
+   }
 </style>
+
+
